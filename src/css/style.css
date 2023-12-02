@@ -21,7 +21,77 @@ a {
   color: inherit;
 }
 
+h3 {
+  margin: 0;
+}
+
 body {
   margin: 0;
-  /* background-image: url(../assets/images/sleep-cat.jpeg); */
+  background: rgb(69, 30, 83);
+  background: radial-gradient(circle, rgba(69, 30, 83, 1) 5%, rgba(23, 9, 29, 1) 100%);
+  font-family: 'Pixelify Sans', sans-serif;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 20px 30px;
 }
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__lifes {
+  display: flex;
+}
+
+.header__hearth {
+  width: 30px;
+  height: 30px;
+  background-image: url('/assets/images/hearth.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header-score-title, .main-title-ready {
+  font-size: 2.5em;
+  color: #ffe4ad;
+  font-weight: 400;
+}
+
+.header-score-points {
+  font-size: 1.8em;
+  color: #f89c23;
+  font-weight: 400;
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-title-start {
+  font-size: 11em;
+  color: #f89c23;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 1);
+}
+
+.main__options {
+  display: flex;
+  gap: 70px;
+  cursor: pointer;
+  font-size: 4.5em;
+  font-weight: bold;
+  color: #ffe4ad;
+}
+
+.main-option-yes:hover, .main-option-no:hover{
+  color: #bc6b00;
+  border-bottom: 3px solid rgb(194, 114, 10);
+}
+
+/*COLOR NARANJA #f89c23 */
+/* COLOR MORADO OSCURO #2d1934 */
+/* COLOR MORADO CLARO #391f43 */
