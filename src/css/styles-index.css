@@ -85,13 +85,11 @@ body {
   font-size: 4.5em;
   font-weight: bold;
   color: #ffe4ad;
+  margin-top: 40px;
 }
 
 .main-option-yes:hover, .main-option-no:hover{
   color: #bc6b00;
   border-bottom: 3px solid rgb(194, 114, 10);
+  transition: 0.4s;
 }
-
-/*COLOR NARANJA #f89c23 */
-/* COLOR MORADO OSCURO #2d1934 */
-/* COLOR MORADO CLARO #391f43 */
