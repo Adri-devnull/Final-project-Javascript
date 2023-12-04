@@ -17,11 +17,22 @@
         <div class="game__container">
             <div class="game__board" id="game-board"></div>
             <div class="game-specifications" id="game-specifications">
-                <div class="game-info">ACIERTOS</div>
-                <div class="game-info">TIEMPO</div>
-                <div class="game-info">MOVIMIENTOS</div>
+                <div class="game-info">
+                    <h3 class="game-info-tittle">ACIERTOS</h3>
+                    <span id="hits" class="game-info-spans">0</span>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-info-tittle">TIEMPO</h3>
+                    <span id="timer" class="game-info-spans">45</span>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-info-tittle">MOVIMIENTOS</h3>
+                    <span id="movements" class="game-info-spans">0</span>
+                </div>
             </div>
         </div>
+        <button id="btn-play" class="btn-play">START GAME</button>
+        <button id="btn-restart" class="btn-play hide">RESTART GAME</button>
     </main>
 
     <script src="/js/memory-game.js"></script>
