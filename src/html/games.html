@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/games.css">
     <title>Games</title>
 </head>
+
 <body>
     <main>
         <div class="select-game__container">
-            <h2 class="select-game-title" >Select Game</h2>
+            <h2 class="select-game-title">Select Game</h2>
             <div class="games__container">
-                <div class="game memory-game"></div>
+                <div class="game memory-game" id="memory-game"></div>
                 <div class="game hangman-game"></div>
-                <div class="game "></div>
+                <div class="game mine-sweeper-game"></div>
             </div>
         </div>
     </main>
+
+    <script src="/js/games.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,88 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h3 {
+  margin: 0;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 20px 30px;
+  background-color: rgb(18, 18, 52);
+}
+
+.game-title {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 4.5em;
+    text-align: center;
+    color: #fff;
+}
+
+.game__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__board {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    gap: 5px;
+}
+
+.game-specifications {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 420px;
+    margin-left: 40px;
+}
+
+.game-info {
+    background-color: rgb(162, 162, 202);
+    height: 100px;
+    width: 200px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+}
+
+.cell {
+    background-color: rgb(111, 136, 199);
+    height: 90px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.cell-clicked {
+  background-color: rgb(224, 232, 254);
+}
