@@ -26,6 +26,7 @@ h3 {
 }
 
 body {
+  font-family: sans-serif;
   margin: 0 auto;
   max-width: 1400px;
   padding: 20px 30px;
@@ -33,44 +34,44 @@ body {
 }
 
 .game-title {
-    font-family: 'Pixelify Sans', sans-serif;
-    font-size: 4.7em;
-    text-align: center;
-    color: #fff;
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 4.7em;
+  text-align: center;
+  color: #fff;
 }
 
 .game__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 .game__board {
-    display: grid;
-    grid-template-columns: repeat(4, 90px);
-    gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 90px);
+  gap: 5px;
 }
 
 .game-specifications {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 420px;
-    margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 420px;
+  margin-left: 40px;
 }
 
 .game-info {
-    background-color: rgb(162, 162, 202);
-    height: 100px;
-    width: 200px;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
+  background-color: rgb(162, 162, 202);
+  height: 100px;
+  width: 200px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
 }
 
 .game-info-tittle {
@@ -83,15 +84,15 @@ body {
 }
 
 .cell {
-    background-color: #6f88c7;
-    height: 90px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 2em;
+  background-color: #6f88c7;
+  height: 90px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 2em;
 }
 
 .cell-clicked {
@@ -116,6 +117,42 @@ body {
   background-color: #6f88c7;
   border-color: #fff;
   transition: .3s;
+}
+
+.banner {
+  background-color: #6f88c7;
+  width: 700px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  border-radius: 20px;
+}
+
+.banner-title {
+  font-size: 1.9em;
+}
+
+.banner-img {
+  width: 230px;
+  height: 230px;
+}
+
+.banner-lose {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  width: 700px;
+  height: 400px;
+  background-image: url('/assets/images/gameover.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .hide {

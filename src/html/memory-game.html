@@ -14,7 +14,12 @@
 <body>
     <main>
         <h1 class="game-title">MEMORY GAME</h1>
-        <div class="game__container">
+        <div class="banner-lose hide" id="banner-lose"></div>
+        <div class="banner hide" id="banner-win">
+            <h2 class="banner-title">YOUR MEMORY IS EXCELLENT!</h2>
+            <img class="banner-img" src="/assets/images/brain.png" alt="">
+        </div>
+        <div class="game__container" id="game-container">
             <div class="game__board" id="game-board"></div>
             <div class="game-specifications" id="game-specifications">
                 <div class="game-info">
@@ -35,7 +40,7 @@
         <button id="btn-restart" class="btn-play hide">RESTART GAME</button>
     </main>
 
-    <script src="/js/memory-game.js"></script>
+    <script src="/js/memory-game/memory-game.js"></script>
 </body>
 
 </html>
