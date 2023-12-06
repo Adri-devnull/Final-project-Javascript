@@ -1,0 +1,90 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h3 {
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0 auto;
+    max-width: 1500px;
+    padding: 20px 30px;
+    background-color: #eeca84;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+.header__title {
+    background-image: url('/assets/images/hangman-game-title.PNG');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.game__container {
+    display: flex;
+}
+
+.game__image {
+    background-image: url('/assets/images/hangman-man.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 50%;
+    height: 700px;
+}
+
+.game__content {
+    width: 50%;
+    height: 700px;
+    background-color: #7d7d7d;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.game__content-letters {
+    display: grid;
+    grid-template-columns: repeat(7, 95px);
+    grid-template-rows: repeat(4, 95px);
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+}
+
+.letter {
+    display: flex;
+    background-color: #d19b67;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #49276d;
+    border: 3px solid #8f2e37;
+    font-size: 4em;
+    cursor: pointer;
+}
