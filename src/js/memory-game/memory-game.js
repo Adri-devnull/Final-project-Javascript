@@ -1,21 +1,15 @@
-
 // TABLERO DEL JUEGO 
 const gameBoardElement = document.getElementById('game-board');
-
 // CONTAINER DE ACIERTOS Y MOVIMIENTOS
 const hitsElement = document.getElementById('hits');
 const movementsElement = document.getElementById('movements');
-
 // ELEMENTO CON EL CONTADOR DEL JUEGO
 const countDownElement = document.getElementById('timer');
-
 // BOTON DE START y RESTART GAME
 const btnStartGameElement = document.getElementById('btn-play');
 const btnRestartGameElement = document.getElementById('btn-restart');
-
 // CONTENEDOR DEL JUEGO
 const gameContainerElement = document.getElementById('game-container');
-
 // BANNERS
 const bannerWinGameElement = document.getElementById('banner-win');
 const bannerLoseGameElement = document.getElementById('banner-lose');
@@ -127,7 +121,7 @@ const verifyChoosedNumbers = (num1, num2, cell) => {
         hits++
         hitsElement.textContent = hits;
         points++
-        memoryCompleted(cell);
+        memoryCompleted();
     }
 }
 
@@ -159,6 +153,8 @@ const restartGame = () => {
     showElement(gameContainerElement);
     hideElement(bannerWinGameElement);
     hideElement(bannerLoseGameElement);
+    hideElement(btnStartGameElement);
+    countDown();
     attempts = 0;
     numberCell1 = '';
     numberCell2 = '';
@@ -167,14 +163,10 @@ const restartGame = () => {
     hits = 0;
     counter = 45;
     points = 0;
-    btnStarted = false;
+    btnStarted = true;
     gameBoardElement.textContent = '';
-
     numbers.sort(() => { return Math.random() - 0.5 });
     createGameBoard()
-
-    showElement(btnStartGameElement);
-    hideElement(btnRestartGameElement);
     countDownElement.textContent = counter;
     hitsElement.textContent = hits;
     movementsElement.textContent = movements;
