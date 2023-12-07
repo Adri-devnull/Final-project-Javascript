@@ -76,6 +76,39 @@ body {
     padding: 10px;
 }
 
+.game__content-word {
+    background-color: rgb(255, 182, 182);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0px 12px;
+}
+
+.gameword__title {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.game__content-errors {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game__content-lifes {
+    display: flex;
+    width: 30%;
+}
+
+.lifes {
+    height: 40px;
+    width: 40px;
+    background-image: url('/assets/images/hearth.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .letter {
     display: flex;
     background-color: #d19b67;
@@ -88,3 +121,28 @@ body {
     font-size: 4em;
     cursor: pointer;
 }
+
+.letter:hover {
+    background-color: rgb(223, 198, 166);
+    transition: .2s;
+}
+
+.character {
+    position: relative;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(155, 127, 91);
+    border: 3px solid #8f2e37;
+    color: transparent;
+    font-size: 4em;
+    height: 100px;
+    width: 90px;
+}
+
+.showLetter {
+    color: #49276d;
+    background-color: rgb(119, 168, 119);
+}
+
