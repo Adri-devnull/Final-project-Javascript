@@ -2,12 +2,17 @@
 const lettersElement = document.getElementById('game-content-letters');
 // ELEMENTO CONTENEDOR DE LA PALABRA DEL JUEGO
 const wordElement = document.getElementById('game-content-word');
+// ELEMENTO CONTENEDOR DE LAS VIDAS DEL USUARIO
+const lifesElement = document.getElementById('game-content-lifes');
+// ELEMENTO CONTENEDOR DE LOS FALLOS DEL USUARIO
+const failsElement = document.getElementById('game-content-fails');
 
 
 // VARIABLES
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-const words = ['vampiro', 'puzzle', 'mesa', 'lechuza', 'magia', 'mono', 'ojo'];
-const fails = 5;
+const words = ['vampiro', 'puzzle', 'mesa', 'lechuza', 'magia', 'mono', 'ojo', 'varita', 'hechizo', 'gafas'];
+let fails = 5;
+let correctLetters = 0;
 
 // FUNCION PINTAR TABLERO DE LETRAS 
 const printBoardLetters = () => {
@@ -58,16 +63,40 @@ printWordToGuess();
 const verifyLetterInWord = (item) => {
     const letter = letterPressed(item);
     const wordElements = wordElement.querySelectorAll('.character');
+    let found = false;
     for (let i = 0; i < randomWord.length; i++) {
         if (randomWord[i] === letter) {
-            wordElements[i].classList.add('showLetter');
+            wordElements[i].classList.add('show-letter');
+            found = true;
+            correctLetters++
         }
     }
+    if (correctLetters === randomWord.length) {
+        console.log('CORRECTO'); // aqui tiene que venir la funcion para cuando el usuario haya completado la palabra
+    } else if (!found && fails > 0) {
+        fails--
+        decreaseLife();
+        showWrongLetter(letter)
+    }
+
 }
 
-// FUNCION QUE PINTA EL ERROR DE LA LETRA SI NO ESTA
-const printLetterError = () => {
-    
+// FUNCION QUE QUITA UNA VIDA SI LA LETRA NO SE ENCUENTRA EN LA PALABRA
+const decreaseLife = () => {
+    const lifes = lifesElement.querySelectorAll('.lifes');
+    const lastIndex = lifes.length - 1;
+    if (lastIndex >= 0) {
+        const lastLife = lifes[lastIndex];
+        lastLife.remove();
+    } // aqui tiene que venir la funcion para cuando haya perdido todas las vidas que muestre game over
+};
+
+// FUNCION QUE MUESTRA LA LETRA ERRONEA ELEGIDA POR EL USUARIO
+const showWrongLetter = (letter) => {
+    const wrongLetter = document.createElement('span');
+    wrongLetter.textContent = letter;
+    wrongLetter.classList.add('wrong-letter');
+    failsElement.append(wrongLetter);
 }
 
 // EVENTO DE ESCUCHA PARA LAS LETRAS DEL JUEGO
