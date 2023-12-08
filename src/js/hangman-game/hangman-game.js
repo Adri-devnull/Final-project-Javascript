@@ -6,6 +6,10 @@ const wordElement = document.getElementById('game-content-word');
 const lifesElement = document.getElementById('game-content-lifes');
 // ELEMENTO CONTENEDOR DE LOS FALLOS DEL USUARIO
 const failsElement = document.getElementById('game-content-fails');
+// ELEMENTO CONTENEDOR DE LA IMAGEN
+const imageHangmanElement = document.getElementById('game-image');
+// ELEMENTO CONTENEDOR DEL BOTON RESTART GAME
+const btnRestartContainerElement = document.getElementById('btn-restart-container');
 
 
 // VARIABLES
@@ -78,7 +82,6 @@ const verifyLetterInWord = (item) => {
         decreaseLife();
         showWrongLetter(letter)
     }
-
 }
 
 // FUNCION QUE QUITA UNA VIDA SI LA LETRA NO SE ENCUENTRA EN LA PALABRA
@@ -99,10 +102,21 @@ const showWrongLetter = (letter) => {
     failsElement.append(wrongLetter);
 }
 
+// FUNCION PARA MOSTRAR EL BANNER DE LOSE CUANDO EL USUARIO NO COMPLETA LA PALABRA
+const showBannerWin = () => {
+    imageHangmanElement.classList.remove('game__image');
+    imageHangmanElement.classList.add('game__image-lose');
+    const restartBtn = document.createElement('button');
+    restartBtn.textContent = 'RESTART GAME';
+    restartBtn.classList.add('btn-restart');
+    btnRestartContainerElement.append(restartBtn);
+}
+
 // EVENTO DE ESCUCHA PARA LAS LETRAS DEL JUEGO
 lettersElement.addEventListener('click', (e) => {
     if (e.target.classList.contains('letter')) {
         letterPressed(e.target.textContent)
         verifyLetterInWord(e.target.textContent)
+        showBannerWin()
     }
 });

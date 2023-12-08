@@ -46,6 +46,13 @@ body {
 
 .game__container {
     display: flex;
+    justify-content: space-evenly;
+}
+
+.game__image-btnrestart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .game__image {
@@ -53,7 +60,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 50%;
+    width: 700px;
     height: 700px;
 }
 
@@ -152,11 +159,43 @@ body {
     font-size: 4em;
     height: 100px;
     width: 90px;
-    background-color: rgb(222, 144, 144);
+    background-color: #de9090;
     color: #000;
 }
 
 .show-letter {
     color: #49276d;
     background-color: rgb(119, 168, 119);
+}
+
+.banners__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.game__image-lose {
+    background-image: url('/assets/images/hangman-died.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 550px;
+    height: 550px;
+}
+
+.hide {
+    display: none;
+}
+
+.btn-restart {
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    padding: 20px 25px;
+    border-radius: 10px;
+    font-size: 2em;
+    cursor: pointer;
+    border: 2px solid #49276d;
+    background-color: #9d3d46;
+    color: #fff;
+    font-family: 'Pixelify Sans', sans-serif;
 }
