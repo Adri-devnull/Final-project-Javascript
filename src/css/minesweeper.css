@@ -1,0 +1,53 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h3 {
+    margin: 0;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 20px 30px;
+    font-family: 'Pixelify Sans', sans-serif;
+    background-color: rgb(209, 136, 0);
+}
+
+.game-container {
+    display: flex;
+}
+
+.game-title {
+    font-size: 7em;
+    text-align: center;
+    margin: 0;
+    text-shadow: 4px 4px 2px rgb(51, 51, 51);
+}
+
+.game__board {
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(8, 30px);
+    grid-template-rows: repeat(8, 30px);
+    background-color: red;
+}
