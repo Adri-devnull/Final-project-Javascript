@@ -10,6 +10,8 @@ const failsElement = document.getElementById('game-content-fails');
 const imageHangmanElement = document.getElementById('game-image');
 // ELEMENTO CONTENEDOR DEL BOTON RESTART GAME
 const btnRestartContainerElement = document.getElementById('btn-restart-container');
+// ELEMENTO CONTENEDOR TITULO WIN O LOSE
+const winLoseTitleElement = document.getElementById('title-win-lose');
 
 
 // VARIABLES
@@ -17,6 +19,8 @@ const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 const words = ['vampiro', 'puzzle', 'mesa', 'lechuza', 'magia', 'mono', 'ojo', 'varita', 'hechizo', 'gafas'];
 let fails = 5;
 let correctLetters = 0;
+let gameOver = false;
+const initialLifeCount = 5;
 
 // FUNCION PINTAR TABLERO DE LETRAS 
 const printBoardLetters = () => {
@@ -33,6 +37,19 @@ const printBoardLetters = () => {
 // LLAMADA A LA FUNCION PARA PINTAR EL TABLERO CON LAS LETRAS DEL JUEGO
 printBoardLetters();
 
+// FUNCION PARA PINTAR LAS VIDAS QUE LE QUEDAN AL USUARIO
+const printLives = (count) => {
+    lifesElement.textContent = '';
+    for (let i = 0; i < count; i++) {
+        const life = document.createElement('span');
+        life.classList.add('lifes');
+        lifesElement.appendChild(life);
+    }
+}
+
+// LLAMADA A FUNCION PARA PINTAR LAS VIDAS DEL JUGADOR
+printLives(initialLifeCount);
+
 // FUNCION PARA ELEGIR GENERAR UNA PALABRA ALEATORIA
 const generateRandomWord = () => {
     const randomNumber = Math.floor(Math.random() * words.length);
@@ -40,7 +57,7 @@ const generateRandomWord = () => {
     return randomWord.toUpperCase();
 }
 // PALABRA GENERADA ALEATORIAMENTE
-const randomWord = generateRandomWord();
+let randomWord = generateRandomWord();
 
 // FUNCION PARA OBTENER EL VALOR DE LA TECLA QUE PRESIONA EL USUARIO
 const letterPressed = (item) => {
@@ -65,24 +82,31 @@ printWordToGuess();
 
 // FUNCION QUE COMPRUEBA SI ESTA LA LETRA EN LA PALABRA
 const verifyLetterInWord = (item) => {
-    const letter = letterPressed(item);
-    const wordElements = wordElement.querySelectorAll('.character');
-    let found = false;
-    for (let i = 0; i < randomWord.length; i++) {
-        if (randomWord[i] === letter) {
-            wordElements[i].classList.add('show-letter');
-            found = true;
-            correctLetters++
+    if (!gameOver) {
+        const letter = letterPressed(item);
+        const wordElements = wordElement.querySelectorAll('.character');
+        let found = false;
+        for (let i = 0; i < randomWord.length; i++) {
+            if (randomWord[i] === letter && !wordElements[i].classList.contains('show-letter')) {
+                wordElements[i].classList.add('show-letter');
+                found = true;
+                correctLetters++;
+            }
+        }
+        if (correctLetters === randomWord.length) {
+            showBanner('YOU WIN', 'game__image-win');
+            gameOver = true;
+        } else if (!found && fails > 0) {
+            fails--;
+            decreaseLife();
+            showWrongLetter(letter);
+        } else if (fails === 0) {
+            showBanner('YOU LOSE', 'game__image-lose');
+            gameOver = true;
         }
     }
-    if (correctLetters === randomWord.length) {
-        console.log('CORRECTO'); // aqui tiene que venir la funcion para cuando el usuario haya completado la palabra
-    } else if (!found && fails > 0) {
-        fails--
-        decreaseLife();
-        showWrongLetter(letter)
-    }
-}
+};
+
 
 // FUNCION QUE QUITA UNA VIDA SI LA LETRA NO SE ENCUENTRA EN LA PALABRA
 const decreaseLife = () => {
@@ -91,7 +115,7 @@ const decreaseLife = () => {
     if (lastIndex >= 0) {
         const lastLife = lifes[lastIndex];
         lastLife.remove();
-    } // aqui tiene que venir la funcion para cuando haya perdido todas las vidas que muestre game over
+    }
 };
 
 // FUNCION QUE MUESTRA LA LETRA ERRONEA ELEGIDA POR EL USUARIO
@@ -102,14 +126,37 @@ const showWrongLetter = (letter) => {
     failsElement.append(wrongLetter);
 }
 
-// FUNCION PARA MOSTRAR EL BANNER DE LOSE CUANDO EL USUARIO NO COMPLETA LA PALABRA
-const showBannerWin = () => {
+// FUNCION PARA MOSTRAR EL BANNER 
+const showBanner = (resultMsg, imageClass) => {
     imageHangmanElement.classList.remove('game__image');
-    imageHangmanElement.classList.add('game__image-lose');
+    imageHangmanElement.classList.add(imageClass);
     const restartBtn = document.createElement('button');
+    const title = document.createElement('h2')
+    title.textContent = resultMsg;
+    winLoseTitleElement.append(title);
     restartBtn.textContent = 'RESTART GAME';
     restartBtn.classList.add('btn-restart');
     btnRestartContainerElement.append(restartBtn);
+    restartGame(restartBtn, title);
+}
+
+// FUNCION PARA RESETEAR EL GAME
+const restartGame = (btn, title) => {
+    btn.addEventListener('click', () => {
+        randomWord = generateRandomWord();
+        fails = 5;
+        correctLetters = 0;
+        gameOver = false;
+        imageHangmanElement.className = '';
+        imageHangmanElement.classList.add('game__image');
+        failsElement.textContent = '';
+        title.textContent = '';
+        btnRestartContainerElement.textContent = '';
+        winLoseTitleElement.textContent = '';
+        wordElement.textContent = '';
+        printWordToGuess();
+        printLives(initialLifeCount);
+    })
 }
 
 // EVENTO DE ESCUCHA PARA LAS LETRAS DEL JUEGO
@@ -117,6 +164,5 @@ lettersElement.addEventListener('click', (e) => {
     if (e.target.classList.contains('letter')) {
         letterPressed(e.target.textContent)
         verifyLetterInWord(e.target.textContent)
-        showBannerWin()
     }
 });

@@ -44,6 +44,10 @@ body {
     margin-right: auto;
 }
 
+.title-win-lose {
+    font-size: 2.5em;
+}
+
 .game__container {
     display: flex;
     justify-content: space-evenly;
@@ -53,6 +57,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .game__image {
@@ -69,6 +74,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
 }
 
 .game__content-letters {
@@ -179,7 +185,16 @@ body {
     background-position: center;
     background-size: contain;
     width: 550px;
-    height: 550px;
+    height: 450px;
+}
+
+.game__image-win {
+    background-image: url('/assets/images/hangman-win-definitivce.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 400px;
 }
 
 .hide {
@@ -194,8 +209,12 @@ body {
     border-radius: 10px;
     font-size: 2em;
     cursor: pointer;
-    border: 2px solid #49276d;
+    border: 3px solid #49276d;
     background-color: #9d3d46;
     color: #fff;
     font-family: 'Pixelify Sans', sans-serif;
+}
+
+.btn-restart:hover {
+    background-color: #ed6774;
 }
