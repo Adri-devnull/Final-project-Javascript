@@ -19,12 +19,16 @@
         <div class="game-container">
             <div class="game__stats">
                 <div class="game__stats-bomb">
-                    <span>IMG BOMB</span>
-                    <span>NUMERO BOMBAS BANDERAS POR PONER</span>
+                    <span>💣</span>
+                    <span id="mines-span">Mines left: 6</span>
                 </div>
                 <div class="game__stats-time">
                     <span>IMG TIME</span>
                     <span> TIEMPO 00:55</span>
+                </div>
+                <div class="game__stats-flags">
+                    <span>🚩</span>
+                    <button id="flag-btn">PONER BANDERA</button>
                 </div>
                 <div class="game__stats-newgame">
                     <button>NEW GAME</button>
@@ -33,10 +37,6 @@
             <div class="game__board" id="game-board"></div>
         </div>
     </main>
-
-
-
-
     <script src="/js/minesweeper-game/minesweeper-game.js"></script>
 </body>
 

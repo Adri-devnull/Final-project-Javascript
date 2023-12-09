@@ -33,8 +33,15 @@ body {
     background-color: rgb(209, 136, 0);
 }
 
+span {
+    font-size: 2em;
+    font-weight: bold;
+}
+
 .game-container {
     display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 
 .game-title {
@@ -42,12 +49,64 @@ body {
     text-align: center;
     margin: 0;
     text-shadow: 4px 4px 2px rgb(51, 51, 51);
+    margin-bottom: 80px;
+}
+
+.game__stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .game__board {
-    width: 70%;
-    display: grid;
-    grid-template-columns: repeat(8, 30px);
-    grid-template-rows: repeat(8, 30px);
-    background-color: red;
+    width: 404px;
+    height: 404px;
+    background-color: lightgray;
+    border: 10px solid darkgrey;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.game__board div {
+    width: 48px;
+    height: 48px;
+    border: 1px solid whitesmoke;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-clicked {
+    background-color: rgb(120, 120, 120);
+}
+
+.flag-clicked {
+    background-color: rgb(163, 163, 163); ;
+}
+
+.bomb-clicked {
+    background-color: rgb(206, 74, 74);
+}
+
+
+/* COLORES PARA LOS NUMEROS DE LAS MINAS */
+.x1 {
+    color: blue;
+}
+
+.x2 {
+    color: red;
+}
+
+.x3 {
+    color: green;
+}
+
+.x4 {
+    color: purple;
+}
+
+.x5 {
+    color: orange;
 }
