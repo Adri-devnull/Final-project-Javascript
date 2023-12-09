@@ -77,12 +77,19 @@ span {
     justify-content: center;
 }
 
+.stats-span {
+    background-color: antiquewhite;
+    border: 2px solid rgb(159, 104, 0);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .tile-clicked {
     background-color: rgb(120, 120, 120);
 }
 
 .flag-clicked {
-    background-color: rgb(163, 163, 163); ;
+    background-color: rgb(16, 16, 16); ;
 }
 
 .bomb-clicked {

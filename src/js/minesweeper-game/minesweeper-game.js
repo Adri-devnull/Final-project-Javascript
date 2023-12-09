@@ -7,7 +7,7 @@ const flagsButtonElement = document.getElementById('flag-btn');
 
 
 // VARIABLES
-let minesCount = 20;
+const minesCount = 11;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
@@ -18,13 +18,14 @@ let tilesCompleted = 0;
 
 // FUNCION PARA CREAR LA LOCALIZACION DE LAS MINAS
 const setMines = () => {
-    while (minesCount > 0) {
+    let minesLeft = minesCount;
+    while (minesLeft > 0) {
         const rRandom = Math.floor(Math.random() * rows);
         const cRandom = Math.floor(Math.random() * columns);
         const mineLocation = rRandom.toString() + '-' + cRandom.toString();
         if (!minesLocation.includes(mineLocation)) {
             minesLocation.push(mineLocation);
-            minesCount -= 1
+            minesLeft -= 1
         }
     }
 
@@ -33,7 +34,7 @@ const setMines = () => {
 // FUNCION PARA CREAR EL TABLERO DEL JUEGO
 const startGame = () => {
     setMines()
-    minesCountElement.textContent = `Mines left: ${minesCount}`;
+    minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
     for (let r = 0; r < rows; r++) {
         const row = [];
         for (let c = 0; c < columns; c++) {
@@ -82,10 +83,13 @@ const clickTile = (tile) => {
         return;
     }
     if (flagEnabled) {
-        if (tile.textContent === '') {
-            tile.textContent = '🚩';
-        }if (tile.textContent === '🚩') {
-            tile.textContent = '';
+        if (flagEnabled) {
+            if (tile.textContent === '') {
+                tile.textContent = '🚩';
+            } else if (tile.textContent === '🚩') {
+                tile.textContent = '';
+            }
+            return;
         }
     }
 
