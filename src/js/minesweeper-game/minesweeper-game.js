@@ -6,11 +6,13 @@ const minesCountElement = document.getElementById('mines-span');
 const flagsButtonElement = document.getElementById('flag-btn');
 // BOTON PARA COMENZAR LA PARTIDA
 const newGameButtonElement = document.getElementById('newgame-btn');
+// BOTON PARA REINICIAR LA PARTIDA
+const restartGameButtonElement = document.getElementById('restartgame-btn');
 // ELEMENTO SPAN DEL TIEMPO
 const timeElement = document.getElementById('span-time');
 
 // VARIABLES
-let minesCount = 11;
+let minesCount = 7;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
@@ -109,7 +111,8 @@ const clickTile = (tile) => {
             tile.textContent = '💣';
             gameOver = true;
             revealMines();
-            return; // Sale de 
+            showUserLose();
+            return;
         }
 
         const coords = tile.dataset.id.split('-');
@@ -152,6 +155,7 @@ const checkMine = (r, c) => {
         board[r][c].textContent = minesFound;
         board[r][c].classList.add("x" + minesFound.toString());
     } else {
+        // top 3
         minesFound += checkMine(r - 1, c - 1); // top left
         minesFound += checkMine(r - 1, c); // top
         minesFound += checkMine(r - 1, c + 1); // top right
@@ -168,7 +172,7 @@ const checkMine = (r, c) => {
 
     if (tilesCompleted === columns * rows - minesCount) {
         gameOver = true;
-        alert('you win') // AQUI VA EL MENSAJE O EL BANNER DE CUANDO EL USUARIO LIMPIA TODAS LAS MINAS
+        showUserWinner();
     }
 }
 
@@ -193,14 +197,72 @@ const countDown = () => {
         timeElement.textContent = `TIME LEFT: ${time}`;
     }, 1000);
     if (time === 0) {
-        clearInterval(intervalId) // poner contenido si el tiempo se le acaba al usuario
+        clearInterval(intervalId)
+        // poner contenido si el tiempo se le acaba al usuario
     }
 }
 
+// FUNCION PARA MOSTRAR CUANDO EL USUARIO HA GANADO
+const showUserWinner = () => {
+    gameBoardElement.textContent = '';
+    gameBoardElement.classList.remove('game__board');
+    gameBoardElement.classList.add('game__board-win');
+    const titleWin = document.createElement('h2');
+    titleWin.textContent = 'MINES DISARMED';
+    titleWin.classList.add('title-win');
+    gameBoardElement.append(titleWin);
+    restartGameButtonElement.classList.remove('hide');
+    newGameButtonElement.classList.add('hide');
+    stopTimer();
+}
+
+// FUNCION PARA MOSTRAR CUANDO EL USUARIO HA PERDIDO
+const showUserLose = () => {
+    gameBoardElement.textContent = '';
+    gameBoardElement.classList.remove('game__board');
+    gameBoardElement.classList.add('game__board-lose');
+    const titleWin = document.createElement('h2');
+    titleWin.textContent = '3,2,1...';
+    titleWin.classList.add('title-win');
+    gameBoardElement.append(titleWin);
+    restartGameButtonElement.classList.remove('hide');
+    newGameButtonElement.classList.add('hide');
+    stopTimer();
+}
+
+// FUNCION PARA REINICIAR TODOS LOS STATS DE LA PARTIDA
+const restartGame = () => {
+    gameBoardElement.classList.remove('game__board-lose');
+    gameBoardElement.classList.remove('game__board-win');
+    gameBoardElement.classList.add('game__board');
+    gameBoardElement.textContent = '';
+    restartGameButtonElement.classList.add('hide');
+    board.length = 0;
+    minesCount = 7;
+    flagEnabled = false;
+    gameOver = false;
+    tilesCompleted = 0;
+    gameStarted = true;
+    time = 120;
+    startGame();
+    countDown();
+}
+// FUNCION PARA DETENER EL CONTADOR
+const stopTimer = () => {
+    clearInterval(intervalId);
+    intervalId = null;
+    time = 120;
+    timeElement.textContent = `TIME LEFT: ${time}`;
+}
 // EVENTO DE ESCUCHA PARA INICIAR LA PARTIDA
 newGameButtonElement.addEventListener('click', () => {
     countDown();
     gameStarted = true;
+})
+
+// EVENTO DE ESCUCHA PARA REINICIAR LA PARTIDA
+restartGameButtonElement.addEventListener('click', () => {
+    restartGame();
 })
 
 // EVENTO DE ESCUCHA PARA EL BOTON DE PONER BANDERAS

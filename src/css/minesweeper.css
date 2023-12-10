@@ -45,10 +45,10 @@ span {
 }
 
 .game-title {
-    font-size: 7em;
+    font-size: 7.5em;
     text-align: center;
     margin: 0;
-    text-shadow: 4px 4px 2px rgb(224, 224, 224);
+    text-shadow: 4px 4px 2px rgb(255, 255, 255);
     margin-bottom: 80px;
 }
 
@@ -80,7 +80,35 @@ span {
     border: 10px solid rgb(64, 41, 7);
     display: flex;
     flex-wrap: wrap;
+    box-shadow: 6px 4px 8px rgb(40, 21, 3);
 }
+
+.game__board-win {
+    background-image: url('/assets/images/minesweeper-win.PNG');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    width: 404px;
+    height: 404px;
+    border: 10px solid rgb(64, 41, 7);
+}
+
+.game__board-lose {
+    background-image: url('/assets/images/minesweeper-lose.PNG');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    width: 404px;
+    height: 404px;
+    border: 10px solid rgb(64, 41, 7);
+}
+
+.title-win {
+    font-size: 2.7em;
+    color: #fff;
+    text-align: center;
+}
+
 
 .game__board div {
     width: 48px;
@@ -154,7 +182,7 @@ span {
     background-color: rgb(206, 74, 74);
 }
 
-.hide { 
+.hide {
     display: none;
 }
 
