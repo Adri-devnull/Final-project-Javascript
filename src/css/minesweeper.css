@@ -48,7 +48,7 @@ span {
     font-size: 7em;
     text-align: center;
     margin: 0;
-    text-shadow: 4px 4px 2px rgb(51, 51, 51);
+    text-shadow: 4px 4px 2px rgb(224, 224, 224);
     margin-bottom: 80px;
 }
 
@@ -58,11 +58,26 @@ span {
     justify-content: space-evenly;
 }
 
+.game__stats-newgame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game__stats-bomb,
+.game__stats-time,
+.game__stats-flag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .game__board {
     width: 404px;
     height: 404px;
-    background-color: lightgray;
-    border: 10px solid darkgrey;
+    background-color: rgb(163, 124, 79);
+    border: 10px solid rgb(64, 41, 7);
     display: flex;
     flex-wrap: wrap;
 }
@@ -70,7 +85,7 @@ span {
 .game__board div {
     width: 48px;
     height: 48px;
-    border: 1px solid whitesmoke;
+    border: 1px solid rgb(103, 75, 40);
     font-size: 2em;
     display: flex;
     align-items: center;
@@ -78,24 +93,70 @@ span {
 }
 
 .stats-span {
-    background-color: antiquewhite;
+    background-color: rgb(255, 218, 172);
     border: 2px solid rgb(159, 104, 0);
-    padding: 10px;
+    box-shadow: 4px 2px 3px rgb(65, 48, 23);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
+    padding: 10px 15px;
 }
 
 .tile-clicked {
-    background-color: rgb(120, 120, 120);
+    background-color: rgb(255, 224, 173);
+}
+
+.flag-button {
+    padding: 10px 30px;
+    background-color: rgb(255, 218, 172);
+    border: 2px solid rgb(159, 104, 0);
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.newgame-btn {
+    padding: 10px 30px;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 1.7em;
+    border-radius: 10px;
+    border: none;
+    background-color: antiquewhite;
+    font-weight: bold;
+    cursor: pointer;
+    border: 3px solid #a76700;
+    width: 225px;
+    height: 80px;
+}
+
+.newgame-btn:hover {
+    background-color: #814f00;
+    color: #fff;
+    transition: .2s;
+    font-size: 1.9em;
+    border: 3px solid #ffffff;
+}
+
+.flag-button:hover {
+    background-color: rgb(236, 188, 115);
+    transition: .2s;
 }
 
 .flag-clicked {
-    background-color: rgb(16, 16, 16); ;
+    background-color: rgb(229, 142, 142);
+    color: #fff;
 }
 
 .bomb-clicked {
     background-color: rgb(206, 74, 74);
 }
 
+.hide { 
+    display: none;
+}
 
 /* COLORES PARA LOS NUMEROS DE LAS MINAS */
 .x1 {

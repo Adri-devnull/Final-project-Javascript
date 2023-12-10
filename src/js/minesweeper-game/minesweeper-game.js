@@ -4,10 +4,13 @@ const gameBoardElement = document.getElementById('game-board');
 const minesCountElement = document.getElementById('mines-span');
 // BOTON DE PONER BANDERAS
 const flagsButtonElement = document.getElementById('flag-btn');
-
+// BOTON PARA COMENZAR LA PARTIDA
+const newGameButtonElement = document.getElementById('newgame-btn');
+// ELEMENTO SPAN DEL TIEMPO
+const timeElement = document.getElementById('span-time');
 
 // VARIABLES
-const minesCount = 11;
+let minesCount = 11;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
@@ -15,6 +18,9 @@ const board = [];
 let flagEnabled = false;
 let gameOver = false;
 let tilesCompleted = 0;
+let time = 120;
+let intervalId;
+let gameStarted = false;
 
 // FUNCION PARA CREAR LA LOCALIZACION DE LAS MINAS
 const setMines = () => {
@@ -77,34 +83,40 @@ const revealMines = () => {
     }
 }
 
-// FUNCION PARA CUANDO SE CLICA UNA DE LAS CELDAS
+// FUNCION PARA CUANDO SE CLICA UNA DE LAS CELDAS PASEN DIFERENTES EVENTOS
 const clickTile = (tile) => {
-    if (gameOver || tile.classList.contains('tile-clicked')) {
-        return;
-    }
-    if (flagEnabled) {
-        if (flagEnabled) {
-            if (tile.textContent === '') {
-                tile.textContent = '🚩';
-            } else if (tile.textContent === '🚩') {
-                tile.textContent = '';
-            }
+    if (gameStarted) {
+        if (gameOver || tile.classList.contains('tile-clicked')) {
             return;
         }
-    }
+        if (flagEnabled) {
+            if (flagEnabled) {
+                if (tile.textContent === '') {
+                    tile.textContent = '🚩';
+                    minesCount--
+                    minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
+                } else if (tile.textContent === '🚩') {
+                    tile.textContent = '';
+                    minesCount++
+                    minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
+                }
+                return;
+            }
+        }
 
-    if (minesLocation.includes(tile.dataset.id)) {
-        tile.classList.add('bomb-clicked');
-        tile.textContent = '💣';
-        gameOver = true;
-        revealMines();
-        return; // Sale de 
-    }
+        if (minesLocation.includes(tile.dataset.id)) {
+            tile.classList.add('bomb-clicked');
+            tile.textContent = '💣';
+            gameOver = true;
+            revealMines();
+            return; // Sale de 
+        }
 
-    const coords = tile.dataset.id.split('-');
-    const r = parseInt(coords[0]);
-    const c = parseInt(coords[1]);
-    checkMine(r, c);
+        const coords = tile.dataset.id.split('-');
+        const r = parseInt(coords[0]);
+        const c = parseInt(coords[1]);
+        checkMine(r, c);
+    }
 }
 
 // COMPROBAR LAS MINAS DE ALREDEDOR QUE TENGLA CADA CELDA
@@ -160,7 +172,7 @@ const checkMine = (r, c) => {
     }
 }
 
-/// CHECKTILE FUNCTION
+// FUNCION PARA REVISAR SI HAY MINAS EN LAS CELDAS ADYACENTES A LA CLICADA
 const checkTile = (r, c) => {
     if (r < 0 || r > rows || c < 0 || c > columns) {
         return 0;
@@ -171,5 +183,25 @@ const checkTile = (r, c) => {
     return 0;
 }
 
+// FUNCION PARA INICIAR UNA CUENTA ATRAS DE TIEMPO
+const countDown = () => {
+    if (intervalId) {
+        return
+    }
+    intervalId = setInterval(() => {
+        time--
+        timeElement.textContent = `TIME LEFT: ${time}`;
+    }, 1000);
+    if (time === 0) {
+        clearInterval(intervalId) // poner contenido si el tiempo se le acaba al usuario
+    }
+}
+
+// EVENTO DE ESCUCHA PARA INICIAR LA PARTIDA
+newGameButtonElement.addEventListener('click', () => {
+    countDown();
+    gameStarted = true;
+})
+
 // EVENTO DE ESCUCHA PARA EL BOTON DE PONER BANDERAS
-flagsButtonElement.addEventListener('click', isFlagActived)
+flagsButtonElement.addEventListener('click', isFlagActived) 

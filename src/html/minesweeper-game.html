@@ -24,17 +24,18 @@
                 </div>
                 <div class="game__stats-time">
                     <span>⏱️</span>
-                    <span class="stats-span"> TIME 10:00</span>
+                    <span class="stats-span" id="span-time">TIME LEFT: 120</span>
                 </div>
                 <div class="game__stats-flags">
                     <span>🚩</span>
-                    <button id="flag-btn">PONER BANDERA</button>
-                </div>
-                <div class="game__stats-newgame">
-                    <button>NEW GAME</button>
+                    <button id="flag-btn" class="flag-button">RAISE FLAG</button>
                 </div>
             </div>
             <div class="game__board" id="game-board"></div>
+            <div class="game__stats-newgame">
+                <button class="newgame-btn" id="newgame-btn">NEW GAME</button>
+                <button class="newgame-btn hide">RESTART</button>
+            </div>
         </div>
     </main>
     <script src="/js/minesweeper-game/minesweeper-game.js"></script>
