@@ -12,7 +12,7 @@ const restartGameButtonElement = document.getElementById('restartgame-btn');
 const timeElement = document.getElementById('span-time');
 
 // VARIABLES
-let minesCount = 11;
+let minesCount = 1;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
@@ -112,7 +112,6 @@ const clickTile = (tile) => {
             showUserLose();
             return;
         }
-
         const coords = tile.dataset.id.split('-');
         const r = parseInt(coords[0]);
         const c = parseInt(coords[1]);
@@ -168,9 +167,7 @@ const checkMine = (r, c) => {
         minesFound += checkMine(r + 1, c); // bottom
         minesFound += checkMine(r + 1, c + 1); // bottom right
     }
-    console.log(columns * rows - minesCount)
-    console.log(tilesCompleted);
-    if (tilesCompleted === columns * rows) {
+    if (tilesCompleted === columns * rows - minesCount) {
         gameOver = true;
         showUserWinner();
     }
@@ -195,11 +192,10 @@ const countDown = () => {
     intervalId = setInterval(() => {
         time--
         timeElement.textContent = `TIME LEFT: ${time}`;
+        if (time === 0) {
+            showUserLose()
+        }
     }, 1000);
-    if (time === 0) {
-        clearInterval(intervalId)
-        // poner contenido si el tiempo se le acaba al usuario
-    }
 }
 
 // FUNCION PARA MOSTRAR CUANDO EL USUARIO HA GANADO
