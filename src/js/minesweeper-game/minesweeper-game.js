@@ -12,7 +12,7 @@ const restartGameButtonElement = document.getElementById('restartgame-btn');
 const timeElement = document.getElementById('span-time');
 
 // VARIABLES
-let minesCount = 7;
+let minesCount = 11;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
@@ -92,16 +92,14 @@ const clickTile = (tile) => {
             return;
         }
         if (flagEnabled) {
-            if (flagEnabled) {
-                if (tile.textContent === '') {
-                    tile.textContent = '🚩';
-                    minesCount--
-                    minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
-                } else if (tile.textContent === '🚩') {
-                    tile.textContent = '';
-                    minesCount++
-                    minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
-                }
+            if (tile.textContent === '') {
+                tile.textContent = '🚩';
+                minesCount--
+                minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
+            } else if (tile.textContent === '🚩') {
+                tile.textContent = '';
+                minesCount++
+                minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
                 return;
             }
         }
@@ -121,6 +119,7 @@ const clickTile = (tile) => {
         checkMine(r, c);
     }
 }
+
 
 // COMPROBAR LAS MINAS DE ALREDEDOR QUE TENGLA CADA CELDA
 const checkMine = (r, c) => {
@@ -169,8 +168,9 @@ const checkMine = (r, c) => {
         minesFound += checkMine(r + 1, c); // bottom
         minesFound += checkMine(r + 1, c + 1); // bottom right
     }
-
-    if (tilesCompleted === columns * rows - minesCount) {
+    console.log(columns * rows - minesCount)
+    console.log(tilesCompleted);
+    if (tilesCompleted === columns * rows) {
         gameOver = true;
         showUserWinner();
     }

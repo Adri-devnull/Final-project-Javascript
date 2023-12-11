@@ -17,10 +17,12 @@ const winLoseTitleElement = document.getElementById('title-win-lose');
 // VARIABLES
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const words = ['vampiro', 'puzzle', 'mesa', 'lechuza', 'magia', 'mono', 'ojo', 'varita', 'hechizo', 'gafas'];
-let fails = 5;
+let fails = 6;
 let correctLetters = 0;
 let gameOver = false;
-const initialLifeCount = 5;
+const initialLifeCount = 6;
+let partsCount = 0;
+const bodyParts = ['rope', 'head', 'body', 'left-arm', 'right-arm', 'leg'];
 
 // FUNCION PINTAR TABLERO DE LETRAS 
 const printBoardLetters = () => {
@@ -80,7 +82,7 @@ const printWordToGuess = () => {
 // LLAMADA A LA FUNCION PARA PINTAR LA PALABRA A ADIVINAR
 printWordToGuess();
 
-// FUNCION QUE COMPRUEBA SI ESTA LA LETRA EN LA PALABRA
+// FUNCION QUE COMPRUEBA SI ESTA LA LETRA EN LA PALABRA Y SI EL USUARIO GANA O PIERDE
 const verifyLetterInWord = (item) => {
     if (!gameOver) {
         const letter = letterPressed(item);
@@ -94,6 +96,7 @@ const verifyLetterInWord = (item) => {
             }
         }
         if (correctLetters === randomWord.length) {
+            removeBodyParts()
             showBanner('YOU WIN', 'game__image-win');
             gameOver = true;
         } else if (!found && fails > 0) {
@@ -101,6 +104,7 @@ const verifyLetterInWord = (item) => {
             decreaseLife();
             showWrongLetter(letter);
         } else if (fails === 0) {
+            removeBodyParts()
             showBanner('YOU LOSE', 'game__image-lose');
             gameOver = true;
         }
@@ -124,6 +128,7 @@ const showWrongLetter = (letter) => {
     wrongLetter.textContent = letter;
     wrongLetter.classList.add('wrong-letter');
     failsElement.append(wrongLetter);
+    addBodyParts();
 }
 
 // FUNCION PARA MOSTRAR EL BANNER 
@@ -144,7 +149,7 @@ const showBanner = (resultMsg, imageClass) => {
 const restartGame = (btn, title) => {
     btn.addEventListener('click', () => {
         randomWord = generateRandomWord();
-        fails = 5;
+        fails = 6;
         correctLetters = 0;
         gameOver = false;
         imageHangmanElement.className = '';
@@ -157,6 +162,21 @@ const restartGame = (btn, title) => {
         printWordToGuess();
         printLives(initialLifeCount);
     })
+}
+
+// FUNCION PARA PINTAR PARTE DEL CUERPO CUANDO HAY UN ERROR
+const addBodyParts = () => {
+    const bodyPart = document.createElement('div');
+    bodyPart.classList.add('game-image');
+    bodyPart.classList.add(`${bodyParts[partsCount]}`);
+    imageHangmanElement.append(bodyPart);
+    partsCount++
+}
+
+// FUNCION PARA ELIMINAR PARTES DEL CUERPO 
+const removeBodyParts = () => {
+    imageHangmanElement.textContent = '';
+    partsCount = 0;
 }
 
 // EVENTO DE ESCUCHA PARA LAS LETRAS DEL JUEGO

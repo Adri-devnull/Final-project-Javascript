@@ -61,12 +61,13 @@ body {
 }
 
 .game__image {
-    background-image: url('/assets/images/hangman-man.png');
+    position: relative;
+    background-image: url('/assets/images/hangman-without-man.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 700px;
-    height: 700px;
+    width: 650px;
+    height: 650px;
 }
 
 .game__content {
@@ -217,4 +218,64 @@ body {
 
 .btn-restart:hover {
     background-color: #ed6774;
+}
+
+.game-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 290px;
+    top: 70px;
+}
+
+.rope {
+    background-image: url('/assets/images/hangman-body-parts/rope.PNG');
+}
+
+.head {
+    background-image: url('/assets/images/hangman-body-parts/head.PNG');
+    position: absolute;
+    left: 270px;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.body {
+    background-image: url('/assets/images/hangman-body-parts/body.PNG');
+    position: absolute;
+    left: 295px;
+    top: 176px;
+    width: 60px;
+    height: 60px;
+}
+
+.right-arm {
+    background-image: url('/assets/images/hangman-body-parts/right-arm.PNG');
+    position: absolute;
+    left: 345px;
+    top: 176px;
+    width: 60px;
+    height: 60px;
+}
+
+.left-arm {
+    background-image: url('/assets/images/hangman-body-parts/left-arm.PNG');
+    position: absolute;
+    left: 242px;
+    top: 176px;
+    width: 60px;
+    height: 60px;
+}
+
+.leg {
+    background-image: url('/assets/images/hangman-body-parts/leg.PNG');
+    position: absolute;
+    left: 280px;
+    top: 235px;
+    width: 60px;
+    height: 60px;
 }
