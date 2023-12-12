@@ -69,6 +69,11 @@ body {
     cursor: pointer;
 }
 
+.game:hover {
+    box-shadow: 0px 0px 8px 5px #a3a3a3;
+    transition: .2s;
+}
+
 .memory-game {
     background-image: url('/assets/images/memory-game-bg.jpg');
 }
@@ -80,4 +85,3 @@ body {
 .mine-sweeper-game {
     background-image: url('/assets/images/mine-sweeper-game.png');
 }
-
