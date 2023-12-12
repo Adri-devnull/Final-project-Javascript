@@ -12,7 +12,7 @@ const restartGameButtonElement = document.getElementById('restartgame-btn');
 const timeElement = document.getElementById('span-time');
 
 // VARIABLES
-let minesCount = 2;
+let minesCount = 4;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
@@ -36,6 +36,10 @@ const setMines = () => {
             minesLeft -= 1
         }
     }
+}
+
+const clearMines = () => {
+    minesLocation.length = 0;
 }
 
 // FUNCION PARA CREAR EL TABLERO DEL JUEGO
@@ -169,13 +173,11 @@ const checkMine = (r, c) => {
         minesFound += checkMine(r + 1, c); // bottom
         minesFound += checkMine(r + 1, c + 1); // bottom right
     }
-    console.log(columns);
-    console.log(rows);
-    console.log(minesCount);
     if (tilesCompleted === columns * rows - minesCount) {
         gameOver = true;
         showUserWinner();
     }
+    console.log(minesCount);
 }
 
 // FUNCION PARA REVISAR SI HAY MINAS EN LAS CELDAS ADYACENTES A LA CLICADA
@@ -239,13 +241,15 @@ const restartGame = () => {
     gameBoardElement.textContent = '';
     restartGameButtonElement.classList.add('hide');
     board.length = 0;
-    minesCount = 7;
+    minesCount = 4;
     flagEnabled = false;
     gameOver = false;
     tilesCompleted = 0;
     gameStarted = true;
     time = 120;
     startGame();
+    clearMines();
+    setMines();
     countDown();
 }
 // FUNCION PARA DETENER EL CONTADOR
