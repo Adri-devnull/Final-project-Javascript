@@ -12,7 +12,7 @@ const restartGameButtonElement = document.getElementById('restartgame-btn');
 const timeElement = document.getElementById('span-time');
 
 // VARIABLES
-let minesCount = 1;
+let minesCount = 2;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
@@ -36,7 +36,6 @@ const setMines = () => {
             minesLeft -= 1
         }
     }
-
 }
 
 // FUNCION PARA CREAR EL TABLERO DEL JUEGO
@@ -91,17 +90,21 @@ const clickTile = (tile) => {
         if (gameOver || tile.classList.contains('tile-clicked')) {
             return;
         }
-        if (flagEnabled) {
-            if (tile.textContent === '') {
+        if (!tile.classList.contains('tile-clicked') && flagEnabled) {
+            if (minesLocation.includes(tile.dataset.id)) {
                 tile.textContent = '🚩';
-                minesCount--
+                minesCount--;
+                minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
+            } else if (tile.textContent === '') {
+                tile.textContent = '🚩';
+                minesCount--;
                 minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
             } else if (tile.textContent === '🚩') {
                 tile.textContent = '';
-                minesCount++
+                minesCount++;
                 minesCountElement.textContent = `MINES LEFT: ${minesCount}`;
-                return;
             }
+            return;
         }
 
         if (minesLocation.includes(tile.dataset.id)) {
@@ -118,7 +121,6 @@ const clickTile = (tile) => {
         checkMine(r, c);
     }
 }
-
 
 // COMPROBAR LAS MINAS DE ALREDEDOR QUE TENGLA CADA CELDA
 const checkMine = (r, c) => {
@@ -167,6 +169,9 @@ const checkMine = (r, c) => {
         minesFound += checkMine(r + 1, c); // bottom
         minesFound += checkMine(r + 1, c + 1); // bottom right
     }
+    console.log(columns);
+    console.log(rows);
+    console.log(minesCount);
     if (tilesCompleted === columns * rows - minesCount) {
         gameOver = true;
         showUserWinner();
