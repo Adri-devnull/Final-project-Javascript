@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/css/whack-a-mole-game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/whack-a-mole-game.css">
     <title>WHACK A MOLE</title>
 </head>
+
 <body>
     <main>
-        <h1>WHACK A MOLE</h1>
+        <h1 class="game__title">WHACK A MOLE</h1>
         <div class="game__container">
-
+            <div class="game__stats">
+                <div class="game__stats-level game-stats" id="game-level">LEVEL 1</div>
+                <div class="game__stats-time game-stats" id="game-time">40s</div>
+                <div class="game__stats-points game-stats" id="game-points">0 pts</div>
+            </div>
+            <div class="game__board" id="game-board"></div>
+            <button id="btn-start" class="btn-game">START GAME</button>
+            <button id="btn-restart" class="btn-game hide">RESTART GAME</button>
         </div>
     </main>
+    <script src="/js/whack-a-mole-game/whack-a-mole-game.js"></script>
 </body>
+
 </html>

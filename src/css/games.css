@@ -52,6 +52,7 @@ body {
 
 .games__container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
@@ -84,4 +85,8 @@ body {
 
 .mine-sweeper-game {
     background-image: url('/assets/images/mine-sweeper-game.png');
+}
+
+.game whack-a-mole-game {
+    background-image: url('/assets/images/whack-a-mole/whack-a-mole-game.png');
 }

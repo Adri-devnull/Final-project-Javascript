@@ -1,0 +1,228 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+body {
+    font-family: 'Pixelify Sans', sans-serif;
+    margin: 0 auto;
+    padding: 20px 30px;
+    background-color: grey;
+    background-image: url('/assets/images/whack-a-mole/ground-bg.jpg');
+    height: 100vh;
+}
+
+.game__title {
+    text-align: center;
+    font-size: 5.5em;
+    text-shadow: 2px 2px 4px #fff;
+    margin-bottom: 30px;
+    color: rgb(23, 12, 0);
+    font-weight: bold;
+}
+
+.game__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.game__board {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(3, 200px);
+    border-radius: 20px;
+    grid-template-rows: repeat(3, 200px);
+    background-image: url('/src/assets/images/whack-a-mole/bg-2.png');
+    width: 600px;
+    height: 600px;
+    box-shadow: 4px 4px 7px 3px rgb(49, 25, 8);
+}
+
+.show-lose {
+    width: 600px;
+    height: 600px;
+    background-image:url('/src/assets/images/whack-a-mole/boom.png');
+    background-color: rgb(119, 61, 0);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.show-win {
+    background-image: url('/src/assets/images/whack-a-mole/mole.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 400px;
+    width: 400px;
+}
+
+.text-win {
+    font-size: 4em;
+    text-align: center;
+    color: #ffb854;
+    font-weight: bold;
+    margin: 0;
+}
+
+.game__stats {
+    display: flex;
+    width: 600px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-stats {
+    border: 5px solid rgb(60, 32, 0);
+    padding: 5px 30px;
+    border-radius: 15px;
+    background-color: rgb(147, 90, 0);
+    font-size: 2.2em;
+    color: #100700;
+    font-weight: bold;
+}
+
+.hole {
+    background-image: url('/src/assets/images/whack-a-mole/hole.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.mole {
+    background-image: url('/src/assets/images/whack-a-mole/mole.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.bomb {
+    background-image: url('/src/assets/images/whack-a-mole/bomb.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    cursor: pointer;
+}
+
+/* POSICIONES DEL TOPO */
+
+.position-0 {
+    left: 20px;
+    top: -20px;
+}
+
+.position-1 {
+    left: 220px;
+    top: -20px;
+}
+
+.position-2 {
+    left: 420px;
+    top: -20px;
+}
+
+.position-3 {
+    left: 20px;
+    top: 180px;
+}
+
+.position-4 {
+    left: 220px;
+    top: 180px;
+}
+
+.position-5 {
+    left: 420px;
+    top: 180px;
+}
+
+.position-6 {
+    left: 20px;
+    top: 380px;
+}
+
+.position-7 {
+    left: 220px;
+    top: 380px;
+}
+
+.position-8 {
+    left: 420px;
+    top: 380px;
+}
+
+.red {
+    color: rgb(97, 0, 0);
+    background-color: rgb(255, 150, 150);
+}
+
+.yellow {
+    color: rgb(254, 220, 107);
+}
+
+.white {
+    color: #fff;
+}
+
+.btn-game {
+    border: 3px solid rgb(60, 32, 0);
+    padding: 5px 30px;
+    border-radius: 15px;
+    background-color: rgb(190, 161, 111);
+    font-size: 2em;
+    color: #100700;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-game:hover {
+    background-color: rgb(103, 65, 0);
+    color: #ffefe3;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
