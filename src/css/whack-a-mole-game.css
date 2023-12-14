@@ -61,7 +61,7 @@ body {
     grid-template-columns: repeat(3, 200px);
     border-radius: 20px;
     grid-template-rows: repeat(3, 200px);
-    background-image: url('/src/assets/images/whack-a-mole/bg-2.png');
+    background-image: url('/assets/images/whack-a-mole/bg-2.png');
     width: 600px;
     height: 600px;
     box-shadow: 4px 4px 7px 3px rgb(49, 25, 8);
@@ -70,7 +70,7 @@ body {
 .show-lose {
     width: 600px;
     height: 600px;
-    background-image:url('/src/assets/images/whack-a-mole/boom.png');
+    background-image:url('/assets/images/whack-a-mole/boom.png');
     background-color: rgb(119, 61, 0);
     background-repeat: no-repeat;
     background-size: cover;
@@ -78,7 +78,7 @@ body {
 }
 
 .show-win {
-    background-image: url('/src/assets/images/whack-a-mole/mole.png');
+    background-image: url('/assets/images/whack-a-mole/mole.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -112,14 +112,14 @@ body {
 }
 
 .hole {
-    background-image: url('/src/assets/images/whack-a-mole/hole.png');
+    background-image: url('/assets/images/whack-a-mole/hole.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
 .mole {
-    background-image: url('/src/assets/images/whack-a-mole/mole.png');
+    background-image: url('/assets/images/whack-a-mole/mole.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -130,7 +130,7 @@ body {
 }
 
 .bomb {
-    background-image: url('/src/assets/images/whack-a-mole/bomb.png');
+    background-image: url('/assets/images/whack-a-mole/bomb.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

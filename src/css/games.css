@@ -21,6 +21,11 @@ a {
     color: inherit;
 }
 
+h2 {
+    margin: 0;
+    margin-bottom: 40px;
+}
+
 h3 {
     margin: 0;
 }
@@ -47,7 +52,6 @@ body {
 .select-game-title {
     font-size: 6.5em;
     color: #fff;
-    margin-bottom: 150px;
 }
 
 .games__container {
@@ -55,7 +59,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    width: 100%;
+    width: 850px;
 }
 
 .game {
@@ -85,8 +89,10 @@ body {
 
 .mine-sweeper-game {
     background-image: url('/assets/images/mine-sweeper-game.png');
+    margin-top: 30px;
 }
 
-.game whack-a-mole-game {
+.whack-a-mole-game {
     background-image: url('/assets/images/whack-a-mole/whack-a-mole-game.png');
+    margin-top: 30px;
 }

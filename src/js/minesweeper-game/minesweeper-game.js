@@ -12,7 +12,7 @@ const restartGameButtonElement = document.getElementById('restartgame-btn');
 const timeElement = document.getElementById('span-time');
 
 // VARIABLES
-let minesCount = 1;
+let minesCount = 4;
 const minesLocation = [];
 const rows = 8;
 const columns = 8;
