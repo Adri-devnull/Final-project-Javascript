@@ -74,12 +74,13 @@ const moveMoleorBombRandom = () => {
     }
     intervalId = setInterval(() => {
         const randomMoleOrBomb = Math.random();
+        console.log('hola');
         if (randomMoleOrBomb < 0.75) {
             setMole();
         } else {
             setBomb();
         }
-    }, difficultyTime)
+    }, difficultyTime);
 }
 
 // FUNCION PARA SUMAR PUNTOS AL CLICAR AL MOLE
@@ -164,6 +165,8 @@ const showWinPoints = () => {
 const restartGame = () => {
     clearInterval(intervalId);
     clearInterval(intervalIdTime);
+    intervalId = undefined;
+    intervalIdTime = undefined;
     counter = 40;
     points = 0;
     gameFinished = false;
