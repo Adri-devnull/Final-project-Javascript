@@ -1,4 +1,3 @@
-
 const memoryGameElement = document.getElementById('memory-game');
 const hangmanGameElement = document.getElementById('hangman-game');
 const minesweeperGameElement = document.getElementById('minesweeper-game');
