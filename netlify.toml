@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/games"
-  to = "/games.html"
+  to = "html/games.html"
   status = 200
 
 [[redirects]]
