@@ -1,24 +1,24 @@
 [[redirects]]
   from = "/games"
-  to = "html/games.html"
+  to = "/html/games.html"
   status = 200
 
 [[redirects]]
   from = "/hangman-game"
-  to = "/hangman-game.html"
+  to = "/html/hangman-game.html"
   status = 200
 
 [[redirects]]
   from = "/memory-game"
-  to = "/memory-game.html"
+  to = "/html/memory-game.html"
   status = 200
 
 [[redirects]]
   from = "/minesweeper-game"
-  to = "/minesweeper-game.html"
+  to = "/html/minesweeper-game.html"
   status = 200
 
 [[redirects]]
   from = "/whack-a-mole-game"
-  to = "/whack-a-mole-game.html"
+  to = "/html/whack-a-mole-game.html"
   status = 200
